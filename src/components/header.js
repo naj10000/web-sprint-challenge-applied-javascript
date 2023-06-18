@@ -23,11 +23,12 @@ const Header = (title, date, temp) => {
 
   headerDate.classList.add('date');
   headerTemp.classList.add('temp');
+  headerDiv.classList.add('header')
 
   headerDate.textContent = date;
   headerTitle.textContent = title;
   headerTemp.textContent = temp;
-
+  console.log(headerDiv)
   return headerDiv
 
 }
@@ -39,12 +40,19 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+  const date = new Date( 'June 18, 2023')
+  const temp = '75\u00B0'
+  const header = Header('BloomTech Times', date, temp)
+  const headerContainer = document.querySelector(selector)
+
+  headerContainer.appendChild( header)
 
   // HINT: querySelector can take in a string (ie querySelector("#wrapper")) 
   // but it can also take in a variable (ie querySelector(selector))
   // We are taking care of passing in the correct selector on line 16,
   // so all that you need to do is pass it into the querySelector method
   // for the tests to work!
+  return headerContainer
 }
 
 export { Header, headerAppender }
